@@ -31,18 +31,18 @@ export default function PostForm({ post }) {
                 featuredImage: file ? file.$id : undefined,
             });
 
-            if (dbPost) {
-                navigate(`/post/${dbPost.$id}`);
+       if (dbPost) {
+           navigate(`/post/${dbPost.$id}`);
             }
-        } else {
-            const file = await appwriteService.uploadFile(data.image[0]);
+       } else {
+           const file = data.image[0]? await appwriteService.uploadFile(data.image[0]):null
+            
 
-            if (file) {
-                const fileId = file.$id;
+        if (file) {
+           const fileId = file.$id;
                 data.featuredImage = fileId;
-                const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
-
-                if (dbPost) {
+           const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
+       if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
             }
@@ -119,5 +119,6 @@ export default function PostForm({ post }) {
             </div>
         </form>
     );
+   
 }
  
