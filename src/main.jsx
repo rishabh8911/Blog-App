@@ -22,7 +22,7 @@ const router = createBrowserRouter([
         element :<Home />
       },
       {
-        path: "/login",
+        path: "/Login",
         element:(
           <AuthLayout authentication={false}>
             <Login />
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         path :"/Signup",
         element:(
           <AuthLayout authentication= {false}>
-            <Login />
+            <Signup />
           </AuthLayout>
         ),    
        },
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
           ),
         },
         {
-          path : "/add-post",
+          path : "/Addpost",
           element :(
             <AuthLayout authentication>
               {""}
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
         },
         {
         
-        path :"/edit-post/:slug",
+        path :"/EditPost/:slug",
         element :(
           <AuthLayout authentication>
             {" "}
@@ -68,10 +68,7 @@ const router = createBrowserRouter([
           </AuthLayout>
         ),
       },
-      {
-        path : "/post/:slug",
-        element : <Post />,
-      },
+      
     ],
 
   }
