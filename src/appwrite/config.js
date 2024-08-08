@@ -32,7 +32,7 @@ export class Service{
 
                 }
             )
-        } catch{
+        } catch (error) {
              console.log("Appwrite serive:: createPost:: error", error)
         }
     }
@@ -66,7 +66,8 @@ export class Service{
             )
             return true
         } catch (error) {
-            console.log("Appwrite serive :: updatepost :: error", error);
+            console.log("Appwrite serive :: deletepost :: error", error);
+            return false
         }
        } 
 
@@ -80,6 +81,7 @@ export class Service{
             
         } catch (error) {
             console.log("Appwrite serive :: getpost :: error", error);
+            return false
         }
        } 
 
@@ -94,6 +96,7 @@ export class Service{
              
         } catch (error) {
             console.log("Appwrite serive :: getpost :: error", error);
+            return false
         }
         
        }

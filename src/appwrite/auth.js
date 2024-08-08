@@ -22,21 +22,19 @@ export class AuthService{
     }
 
     async createAccount({email, password, name}){
-        try{
-            const userAccount = await this.account.create
-            (ID.unique(), email, password, name);
-            if (userAccount){
-                // call another method 
-                return userAccount;
-            }else{
-                return userAccount; 
-
+        try {
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
+            if (userAccount) {
+                // call another method
+                return this.login({email, password});
+            } else {
+               return  userAccount;
             }
-
-        } catch (error){
+        } catch (error) {
             throw error;
-              
         }
+
+        
 
     }
 
@@ -46,31 +44,28 @@ export class AuthService{
             (email, password);
             
         } catch (error) {
-            throw error
+            throw error;
         }
         
     }
 
-    async getCurrentUser (){
-        try{
+    async getCurrentUser() {
+        try {
             return await this.account.get();
+        } catch (error) {
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
+        }
 
-        }catch (error)
-       { throw error;}
-
-
-       return null;
+        return null;
     }
 
-    async logout()
-    {
-         try {
+    async logout() {
+
+        try {
             await this.account.deleteSessions();
-            
-         } catch (error) {
-            throw error;
-            
-         }
+        } catch (error) {
+            console.log("Appwrite serive :: logout :: error", error);
+        }
     }
 
 }

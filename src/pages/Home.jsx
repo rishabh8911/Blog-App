@@ -4,7 +4,7 @@ import {Container, PostCard} from "..//components"
 
 
 function Home() {
-    const [posts, setposts] = useState([])
+    const [posts, setPosts] = useState([])
 
 
     useEffect(()=>{

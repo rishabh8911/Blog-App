@@ -6,11 +6,12 @@ import store from './store/store.js'
 import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { AuthLayout, Login  } from './components/index.js'
-
+import Home from './pages/Home.jsx'
 import EditPost from './pages/EditPost.jsx'
 import Signup from './pages/Signup'
 import AddPost from './pages/AddPost.jsx'
 import AllPost from './pages/AllPost.jsx'
+import Post from "./pages/Post";
 
 
 
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
             <EditPost />
           </AuthLayout>
         ),
+      },
+      {
+        path: "/post/:slug",
+        element: <Post />,
       },
       
     ],

@@ -5,6 +5,7 @@ import Container from "./Container/Container";
 import Logo from "./Logo";
 import LogoutBtn from "./Header/LogoutBtn";
 import RTE from "./RTE";
+import Post from "../pages/Post";
 import Input from "./Input";
 import Button from "./Button";
 import Login from "./Login"
@@ -18,6 +19,7 @@ export {
     Header,
     Footer,
     Container,
+    Post,
     Logo,
     LogoutBtn,
     RTE,
