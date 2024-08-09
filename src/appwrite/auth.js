@@ -1,27 +1,20 @@
-import conf from "../conf/conf.js";
+import conf from '../conf/conf.js';
 import { Client, Account, ID } from "appwrite";
 
 
-
-//The design choice to create the account property inside the constructor rather than directly below the new client property is made for 
-//clarity and proper initialization flow
-
-export class AuthService{
+export class AuthService {
     client = new Client();
     account;
-    //The constructor allows you to initialize 
-    //instance properties when an object is created. 
-    //This is especially useful if you need to set up some 
-    //state or configure dependencies.
-    constructor(){
-        this.client
-        .setEndpoint(conf.appwriteUrl)
-        .setProject(conf.appwriteProjectId);
-        this.account= new Account(this.client);
 
+    constructor() {
+        this.client
+            .setEndpoint(conf.appwriteUrl)
+            .setProject(conf.appwriteProjectId);
+        this.account = new Account(this.client);
+            
     }
 
-    async createAccount({email, password, name}){
+    async createAccount({email, password, name}) {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
@@ -33,20 +26,14 @@ export class AuthService{
         } catch (error) {
             throw error;
         }
-
-        
-
     }
 
-    async login ({email, password}) {
+    async login({email, password}) {
         try {
-            return await this.account.createEmailSession
-            (email, password);
-            
+            return await this.account.createEmailSession(email, password);
         } catch (error) {
             throw error;
         }
-        
     }
 
     async getCurrentUser() {
@@ -67,14 +54,10 @@ export class AuthService{
             console.log("Appwrite serive :: logout :: error", error);
         }
     }
-
 }
-
-
-
-
-
 
 const authService = new AuthService();
 
-export default authService ;
+export default authService
+
+
